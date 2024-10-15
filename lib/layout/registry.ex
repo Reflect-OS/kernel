@@ -40,12 +40,7 @@ defmodule ReflectOS.Kernel.Layout.Registry do
 
   use Agent
 
-  @doc """
-  Starts the Registry.
-
-  As discussed above, typically done in the application callback
-  of your library.
-  """
+  @doc false
   def start_link(_) do
     Agent.start_link(fn -> MapSet.new() end, name: __MODULE__)
   end

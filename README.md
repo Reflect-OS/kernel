@@ -6,11 +6,19 @@ ReflectOS is the approachable, configurable, and extensible OS for your smart mi
 
 This package provides the foundation for developers in the community to extend the OS by building their own sections, layouts, and layout managers.
 
-## Building ReflectOS Extensions
+> **Warning!**
+> 
+> This project is being actively developed, and the API is not currently stable.
+> That said, would love feedback from those using it to build their own ReflectOS
+> extensions on how it can be improved and further stabilized.  Please feel free
+> to open an issue on the 
+> [library GitHub](https://github.com/Reflect-OS/kernel/issues) with an suggestions.
+
+## Extending ReflectOS
 
 ### Getting Started
 
-ReflectOS allows developers to extend it's functionality by creating elixir libraries which register the extension with the system.  New sections, layouts, and layout managers can all be added to the OS via extension libraries (which are just standard elixir packages containig new ReflectOS modules).
+ReflectOS allows developers to extend it's functionality by creating elixir libraries which register the extension with the system.  New sections, layouts, and layout managers can all be added to the OS via extension libraries (which are just standard elixir packages containing new ReflectOS modules).
 
 The best way to start building your own extension library is to create 
 a standard new elixir project using the `mix new` command, for example:
@@ -85,7 +93,7 @@ defmodule MyReflectOSExtensions.Application do
 end
 ```
 
-### Adding Extensions to ReflectOS
+### Adding Extension Libraries to ReflectOS
 
 To test your library and create a custom ReflectOS firmware image which includes your extensions, clone the [latest release of the ReflectOS Firmware](https://github.com/Reflect-OS/firmware/releases).  Be sure to checkout a release (e.g. use the `-b` flag), as the `main` branch may not be stable.  For example:
 ```

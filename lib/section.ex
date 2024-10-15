@@ -15,7 +15,7 @@ defmodule ReflectOS.Kernel.Section do
 
   Sections are just modules which `use ReflectOS.Kernel.Section`.  The callbacks and other requirements for a Section fall into two major categories:
 
-  1. Configuration experience via the [ReflectOS Console](https://github.com/reflect-os) web ui.
+  1. Configuration experience via the [ReflectOS Console](https://github.com/reflect-os/console) web ui.
   2. Runtime native display rendering on the smart mirror/display
 
   ### Configuration Experience
@@ -42,11 +42,11 @@ defmodule ReflectOS.Kernel.Section do
   See below for an example Section which renders a simple timer on the user's
   smart mirror/display:
 
-      defmodule ReflectOS.Core.Sections.Timer do
+      defmodule MyReflectOSExtensions.Sections.Timer do
         # Note that section passes along any options to the underlying `Scenic.Scene`
         use ReflectOS.Kernel.Section, has_children: false
 
-        alias ReflectOS.Core.Sections.Timer
+        alias __MODULE__
 
         alias Scenic.Graph
         import Scenic.Primitives, only: [{:text, 3}]
@@ -361,7 +361,10 @@ defmodule ReflectOS.Kernel.Section do
         |> validate_number(:timer_seconds, greater_than: 0)
       end
   """
-  @callback changeset(section :: Ecto.Schema.embedded_schema(), params :: %{binary() => any()}) ::
+  @callback changeset(
+              section_config :: Ecto.Schema.embedded_schema(),
+              params :: %{binary() => any()}
+            ) ::
               Ecto.Changeset.t()
 
   @doc """
@@ -401,7 +404,8 @@ defmodule ReflectOS.Kernel.Section do
 
   This is likely to be rarely used, as sections use the `c:changeset/2` callback to validate the configuration from the user, but is provided as it can be useful during development to ensure configuration your section is receiving matches what you expect.
   """
-  @callback validate_section(config :: struct()) :: :ok | {:error, error: any()}
+  @callback validate_section(config :: Ecto.Schema.embedded_schema()) ::
+              :ok | {:error, error: any()}
 
   @doc """
   Optional callback for when users update a section's configuration while it's displayed on the ReflectOS dashboard.
