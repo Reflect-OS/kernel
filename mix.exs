@@ -40,11 +40,10 @@ defmodule ReflectOS.Kernel.MixProject do
       name: "ReflectOS Kernel",
       source_url: "https://github.com/Reflect-OS/kernel",
       homepage_url: "https://github.com/Reflect-OS/kernel",
+      source_ref: "v#{@version}",
       extras: ["README.md"],
       main: "readme",
-      groups_for_modules: groups_for_modules(),
-      source_ref: "v#{@version}",
-      source_url: "https://github.com/boydm/scenic"
+      groups_for_modules: groups_for_modules()
     ]
   end
 
@@ -64,7 +63,6 @@ defmodule ReflectOS.Kernel.MixProject do
         ReflectOS.Kernel.LayoutManager,
         ReflectOS.Kernel.LayoutManager.Definition,
         ReflectOS.Kernel.LayoutManager.State,
-        ReflectOS.Kernel.ActiveLayout,
         ReflectOS.Kernel.LayoutManager.Registry
       ],
       "Configuration Options": [
@@ -72,9 +70,10 @@ defmodule ReflectOS.Kernel.MixProject do
         ReflectOS.Kernel.OptionGroup
       ],
       System: [
+        ReflectOS.Kernel.ActiveLayout,
         ReflectOS.Kernel.Settings.System
       ],
-      Scenic: [
+      "Section Helpers": [
         ReflectOS.Kernel.Components,
         ReflectOS.Kernel.Typography,
         ReflectOS.Kernel.GraphHelpers

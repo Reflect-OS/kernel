@@ -101,7 +101,7 @@ $ git clone https://github.com/reflect-os/firmware.git my_custom_firmware -b v0.
 ```
 Be sure to use the version number of the most recent release!
 
-From there, it's as simple as adding your library as a dependency to the firmware's `mix.exs` file, we recommend starting using the `path` option to refer to a local directory during development (see `Mix.Tasks.Deps` for more information on the various way to reference a dependency).
+From there, it's as simple as adding your library as a dependency to the firmware's `mix.exs` file!  We recommend starting using the `path` option to refer to a local directory during development (see `Mix.Tasks.Deps` for more information on the various way to reference a dependency).
 
 Once you've added your extension library as a dependency, follow the getting started instructions in the [Firmware's Readme](https://github.com/Reflect-OS/firmware) to see your project in action!
 

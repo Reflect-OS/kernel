@@ -1,4 +1,6 @@
 defmodule ReflectOS.Kernel.ActiveLayout do
+  @moduledoc false
+
   alias ReflectOS.Kernel.Settings.LayoutStore
 
   @table ReflectOS.ActiveLayout

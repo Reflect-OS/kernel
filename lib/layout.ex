@@ -67,7 +67,7 @@ defmodule ReflectOS.Kernel.Layout do
   * `c:init_layout/3`
   * `c:handle_section_update/3`
 
-  Sections can also optionally implement the following callbacks:
+  `Layouts` can also optionally implement the following callbacks:
 
   * `c:validate_layout/1`
   * `c:handle_config_update/2`

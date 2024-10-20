@@ -1,6 +1,6 @@
 defmodule ReflectOS.Kernel.Layout.Registry do
   @moduledoc """
-  Used to register one or more `ReflectOS.Kernel.Layout`s with the system.
+  Used to register one or more `ReflectOS.Kernel.Layout` with the system.
 
   If you are building an extension library with a new layout type,
   the layout module must be registered with the ReflectOS system.
