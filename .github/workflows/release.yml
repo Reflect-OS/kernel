@@ -3,8 +3,8 @@ name: Release
 on: workflow_dispatch
 
 jobs:
-  release-system:
-    name: Release System
+  release:
+    name: Release Package
     runs-on: ubuntu-20.04
     permissions:
       contents: write
@@ -77,7 +77,7 @@ jobs:
 
   prepare-next-release:
     name: Prepare Next Release
-    needs: [ release-system ]
+    needs: [ release ]
     runs-on: ubuntu-20.04
     permissions:
       contents: write
