@@ -1,4 +1,8 @@
-defmodule ReflectOS.Kernel.Components do
+defmodule ReflectOS.Kernel.Primatives do
+  @moduledoc """
+  Provides useful helpers for developing section UIs using `Scenic.Scene`
+  on the ReflectOS platform.
+  """
   alias Scenic.Graph
   alias Scenic.Assets.Stream
   alias Scenic.Assets.Static
@@ -6,6 +10,19 @@ defmodule ReflectOS.Kernel.Components do
 
   import ReflectOS.Kernel.Typography
 
+  @doc """
+  Renders a label for the given  section graph given the common configuration
+  fields of `show_label?` and `label`.
+
+  Note that the section label **must** be called after the graph is complete.
+
+  See `section_label/3` for available options.
+  """
+  @spec render_section_label(
+          graph :: Graph.t(),
+          %{show_label?: boolean(), label: binary()},
+          opts :: Keyword.t()
+        ) :: Graph.t()
   def render_section_label(graph, config, opts \\ [])
 
   def render_section_label(%Graph{} = graph, %{show_label?: true, label: label}, opts) do
@@ -15,6 +32,18 @@ defmodule ReflectOS.Kernel.Components do
 
   def render_section_label(%Graph{} = graph, %{show_label?: false}, _opts), do: graph
 
+  @doc """
+  Renders a label for the given  section graph given the label text.
+
+  Note that the section label **must** be called after the graph is complete.
+
+  Options are:
+  * `:width` - A fixed width for the section, defaults to the
+  width of the section or of the label text, whichever is greater.
+  * `align` - The text alignment of the label, allowed values are `:left`,
+  `:center`, and `:right`.
+  """
+  @spec section_label(graph :: Graph.t(), label :: binary(), opts :: Keyword.t()) :: Graph.t()
   def section_label(%Graph{} = graph, label, opts \\ []) when is_binary(label) do
     {left, top, right, _bottom} =
       case Graph.bounds(graph) do
@@ -34,7 +63,7 @@ defmodule ReflectOS.Kernel.Components do
       if is_number(opts[:width]) do
         opts[:width]
       else
-        max(section_width, label_width + 24)
+        max(section_width, label_width)
       end
 
     left =
@@ -60,10 +89,33 @@ defmodule ReflectOS.Kernel.Components do
     graph
   end
 
+  @doc """
+  Renders a QR code on the provided `Scenic.Graph` which encodes the given `content` string.
+
+  Uses the `QRCodeEx` library.
+
+  Options passed on for generating a QR Code:
+  * `:color`
+  * `:background_color`
+  * `:width`
+
+  We recommend using the default colors, which renders
+  a standard black and white QR code on a white background.
+
+  The default `:width` is 250px.
+
+  The remaining `opts` are passed on the underlying `Scenic.Primitives.rect/3`
+  """
+  @spec qr_code(graph :: Graph.t(), content :: binary(), opts :: keyword()) :: Graph.t()
   def qr_code(%Graph{} = graph, content, opts \\ []) do
     qr_code_spec(content, opts).(graph)
   end
 
+  @doc """
+  The "spec" version of `qr_code/3`, which allows it to be rendered later.
+
+  See `Scenic.Primitives` for more information.
+  """
   def qr_code_spec(content, opts \\ []) do
     default_width = 250
 

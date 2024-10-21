@@ -74,7 +74,7 @@ defmodule ReflectOS.Kernel.MixProject do
         ReflectOS.Kernel.Settings.System
       ],
       "Section Helpers": [
-        ReflectOS.Kernel.Components,
+        ReflectOS.Kernel.Primatives,
         ReflectOS.Kernel.Typography,
         ReflectOS.Kernel.GraphHelpers
       ],

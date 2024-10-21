@@ -1,6 +1,5 @@
 defmodule ReflectOS.Kernel.Ecto.Module do
   @moduledoc """
-
   Custom Type to support storing atom module names in an `Ecto.Changeset`.
 
   You can use this to persist atoms in your module configuration, which is
