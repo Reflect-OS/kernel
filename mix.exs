@@ -31,6 +31,9 @@ defmodule ReflectOS.Kernel.MixProject do
       {:ex_doc, "~> 0.34", only: :dev, runtime: false},
       {:property_table, "~> 0.2.5"},
       {:scenic, "~>  0.11.2"},
+      # Need to resolve wrap issue
+      {:font_metrics,
+       github: "jvantuyl/font_metrics", branch: "infinite_wrap_fix/1", override: true},
       {:qrcode_ex, "~> 0.1.0"},
       {:uuid, "~> 1.1"},
       {:ecto, "~> 3.12"}

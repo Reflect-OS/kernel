@@ -56,7 +56,7 @@ defmodule ReflectOS.Kernel.Section do
         import ReflectOS.Kernel.Typography
         alias ReflectOS.Kernel.Section.Definition
         alias ReflectOS.Kernel.{OptionGroup, Option}
-        import ReflectOS.Kernel.Components, only: [render_section_label: 2]
+        import ReflectOS.Kernel.Primitives, only: [render_section_label: 2]
 
         #####################################################
         # Section Configuration

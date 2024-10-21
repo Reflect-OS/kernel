@@ -80,8 +80,8 @@ defmodule ReflectOS.Kernel.Typography do
       [font_size: 72]
   """
   @spec h2(styles :: Keyword.t()) :: Keyword.t()
-  def h2(opts \\ []) do
-    [font_size: 72] ++ opts
+  def h2(styles \\ []) do
+    [font_size: 72] ++ styles
   end
 
   @doc """
@@ -96,8 +96,8 @@ defmodule ReflectOS.Kernel.Typography do
       [font_size: 64]
   """
   @spec h3(styles :: Keyword.t()) :: Keyword.t()
-  def h3(opts \\ []) do
-    [font_size: 64] ++ opts
+  def h3(styles \\ []) do
+    [font_size: 64] ++ styles
   end
 
   @doc """
@@ -112,8 +112,8 @@ defmodule ReflectOS.Kernel.Typography do
       [font_size: 56]
   """
   @spec h4(styles :: Keyword.t()) :: Keyword.t()
-  def h4(opts \\ []) do
-    [font_size: 56] ++ opts
+  def h4(styles \\ []) do
+    [font_size: 56] ++ styles
   end
 
   @doc """
@@ -128,8 +128,8 @@ defmodule ReflectOS.Kernel.Typography do
       [font_size: 48]
   """
   @spec h5(styles :: Keyword.t()) :: Keyword.t()
-  def h5(opts \\ []) do
-    [font_size: 48] ++ opts
+  def h5(styles \\ []) do
+    [font_size: 48] ++ styles
   end
 
   @doc """
@@ -144,8 +144,8 @@ defmodule ReflectOS.Kernel.Typography do
       [font_size: 40]
   """
   @spec h6(styles :: Keyword.t()) :: Keyword.t()
-  def h6(opts \\ []) do
-    [font_size: 40] ++ opts
+  def h6(styles \\ []) do
+    [font_size: 40] ++ styles
   end
 
   @doc """
@@ -160,8 +160,8 @@ defmodule ReflectOS.Kernel.Typography do
       [font_size: 32]
   """
   @spec h7(styles :: Keyword.t()) :: Keyword.t()
-  def h7(opts \\ []) do
-    [font_size: 32] ++ opts
+  def h7(styles \\ []) do
+    [font_size: 32] ++ styles
   end
 
   @doc """
@@ -178,19 +178,43 @@ defmodule ReflectOS.Kernel.Typography do
       [font_size: 24]
   """
   @spec p(styles :: Keyword.t()) :: Keyword.t()
-  def p(opts \\ []) do
-    [font_size: 24] ++ opts
+  def p(styles \\ []) do
+    [font_size: 24] ++ styles
   end
 
   ############
   # Font Weight
   ############
 
-  def bold(opts \\ []) do
-    [font: :roboto_bold] ++ opts
+  @doc """
+  Sets the `font` to `:roboto_bold` and returns the style list for
+  method piping.  `styles` defaults to an empty list so that
+  this method can be used to start piping.
+
+      iex> p() |> bold()
+      [font: :roboto_bold, font_size: 24]
+
+      iex> bold()
+      [font: :roboto_bold]
+  """
+  @spec bold(styles :: Keyword.t()) :: Keyword.t()
+  def bold(styles \\ []) do
+    [font: :roboto_bold] ++ styles
   end
 
-  def light(opts \\ []) do
-    [font: :roboto_light] ++ opts
+  @doc """
+  Sets the `font` to `:roboto_bold` and returns the style list for
+  method piping.  `styles` defaults to an empty list so that
+  this method can be used to start piping.
+
+      iex> p() |> light()
+      [font: :roboto_light, font_size: 24]
+
+      iex> light()
+      [font: :roboto_light]
+  """
+  @spec light(styles :: Keyword.t()) :: Keyword.t()
+  def light(styles \\ []) do
+    [font: :roboto_light] ++ styles
   end
 end

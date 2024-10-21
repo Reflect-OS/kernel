@@ -1,5 +1,8 @@
 # ReflectOS Kernel
 
+[![Test](https://github.com/Reflect-OS/kernel/actions/workflows/test.yml/badge.svg)](https://github.com/Reflect-OS/kernel/actions/workflows/test.yml)
+[![Hex.pm Version](https://img.shields.io/hexpm/v/reflect_os_kernel.svg?style=flat)](https://hex.pm/packages/reflect_os_kernel)
+
 ## About
 
 ReflectOS is the approachable, configurable, and extensible OS for your smart mirror project.  It is designed to allow anyone to easily install, customize, and enjoy a smart mirror/display - no coding or command line usage required!  Instructions for installing on your device and more details about ReflectOS can be found on the [ReflectOS Firmware](https://github.com/Reflect-OS/firmware) project.
@@ -34,7 +37,7 @@ Then, bring this package to your project by adding `reflect_os_kernel` to your l
 ```elixir
 def deps do
   [
-    {:reflect_os_kernel, "~> 0.1.0"}
+    {:reflect_os_kernel, "~> 0.10.0"}
   ]
 end
 ```
@@ -43,7 +46,7 @@ end
 
 Creating an extension is essentially just creating a module in your library which implements the proper elixir behavior.  Most extensions are comprised of a set of callbacks which describe both the runtime behavior and configuration experience through the [ReflectOS Console](https://github.com/reflect-os/console).  
 
-See the documentation for `ReflectOS.Kernel.Section`, `ReflectOS.Kernel.Layout`, and `ReflectOS.Kernel.LayoutManager`  for more details on how to get started.
+See the [documentation](https://hexdocs.pm/reflect_os_kernel) for `ReflectOS.Kernel.Section`, `ReflectOS.Kernel.Layout`, and `ReflectOS.Kernel.LayoutManager`  for more details on how to get started.
 
 Note that while Layout Managers are built on top of `GenServer`, Sections and Layouts are built on top of `Scenic.Scene` from the [Scenic UI Framework](https://hexdocs.pm/scenic/overview_general.html).  If you are building your own Section or Layout, it is highly recommended you familiarize yourself with Scenic before getting started.
 
@@ -109,9 +112,12 @@ Once you've added your extension library as a dependency, follow the getting sta
 
 For examples of how to build your own extensions to ReflectOS, check out the [ReflectOS Core](https://github.com/Reflect-OS/core) project.  These are extensions which are shipped with the pre-built ReflectOS firmware.
 
+## Contributing
 
-
-
+Contributions are welcome for this project!  You can [open an issue]
+(https://github.com/Reflect-OS/kernel/issues) to report a bug or request
+a feature enhancement.  Code contributions are also welcomed, and can be 
+submitted by forking this repository and creating a pull request.  
 
 ## Learn More
 
