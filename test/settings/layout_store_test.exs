@@ -87,7 +87,7 @@ defmodule ReflectOS.Kernel.Settings.LayoutStoreTest do
     test "saves a layout with map config" do
       # Arrange
       expected = test_layout()
-      layout = %{expected | config: %{}}
+      layout = %{expected | config: Map.from_struct(expected.config)}
 
       # Assert
       assert {:ok, %Layout{} = _} = LayoutStore.save(layout)

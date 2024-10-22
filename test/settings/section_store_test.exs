@@ -84,7 +84,7 @@ defmodule ReflectOS.Kernel.Settings.SectionStoreTest do
     test "saves a section with map config" do
       # Arrange
       expected = test_section()
-      section = %{expected | config: %{}}
+      section = %{expected | config: Map.from_struct(expected.config)}
 
       # Assert
       assert {:ok, %Section{} = _} = SectionStore.save(section)

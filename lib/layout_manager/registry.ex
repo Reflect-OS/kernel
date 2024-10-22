@@ -70,7 +70,7 @@ defmodule ReflectOS.Kernel.LayoutManager.Registry do
   @spec definitions() :: list(ReflectOS.Kernel.LayoutManager.Definition.t())
   def definitions() do
     list()
-    |> Enum.map(& &1.layoutmanager_definition())
+    |> Enum.map(& &1.layout_manager_definition())
   end
 
   @doc ~S"""

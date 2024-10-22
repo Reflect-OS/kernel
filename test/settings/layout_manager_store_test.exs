@@ -84,7 +84,7 @@ defmodule ReflectOS.Kernel.Settings.LayoutManagerStoreTest do
     test "saves a layout manager with map config" do
       # Arrange
       expected = test_layout_manager()
-      layout_manager = %{expected | config: %{}}
+      layout_manager = %{expected | config: Map.from_struct(expected.config)}
 
       # Assert
       assert {:ok, %LayoutManager{} = _} = LayoutManagerStore.save(layout_manager)
