@@ -18,11 +18,6 @@ defmodule ReflectOS.Kernel.Settings do
     PropertyTable.flush_to_disk(@table)
   end
 
-  def put_many(properties) when is_list(properties) do
-    PropertyTable.put_many(@table, properties)
-    PropertyTable.flush_to_disk(@table)
-  end
-
   def subscribe(key) when is_list(key) do
     PropertyTable.subscribe(@table, key)
   end
