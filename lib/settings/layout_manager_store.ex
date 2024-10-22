@@ -10,14 +10,14 @@ defmodule ReflectOS.Kernel.Settings.LayoutManagerStore do
   def list() do
     Settings.match(["layout_managers", :_])
     |> Enum.map(fn {["layout_managers", id], layout_manager} ->
-      %{layout_manager | id: id}
+      format(layout_manager, id)
     end)
   end
 
   def get(layout_manager_id) when is_binary(layout_manager_id) do
     case Settings.get(["layout_managers", layout_manager_id]) do
-      %LayoutManager{module: module, config: config} = layout_manager ->
-        %{layout_manager | id: layout_manager_id, config: struct(module, config)}
+      %LayoutManager{} = layout_manager ->
+        format(layout_manager, layout_manager_id)
 
       nil ->
         nil
@@ -54,5 +54,9 @@ defmodule ReflectOS.Kernel.Settings.LayoutManagerStore do
   def delete(layout_manager_id)
       when is_binary(layout_manager_id) do
     Settings.delete(["layout_managers", layout_manager_id])
+  end
+
+  defp format(%LayoutManager{module: module, config: config} = layout_manager, layout_manager_id) do
+    %{layout_manager | id: layout_manager_id, config: struct(module, config)}
   end
 end

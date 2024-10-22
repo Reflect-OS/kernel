@@ -12,7 +12,9 @@ defmodule ReflectOS.Kernel.MixProject do
       elixir: "~> 1.17",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      docs: docs()
+      docs: docs(),
+      elixirc_paths: elixirc_paths(Mix.env()),
+      test_coverage: [ignore_modules: [~r/ReflectOS\.Kernel\.Test/]]
     ]
   end
 
@@ -88,4 +90,7 @@ defmodule ReflectOS.Kernel.MixProject do
       ]
     ]
   end
+
+  defp elixirc_paths(:test), do: ["test/support", "lib"]
+  defp elixirc_paths(_), do: ["lib"]
 end

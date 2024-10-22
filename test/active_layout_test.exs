@@ -16,6 +16,7 @@ defmodule ReflectOS.Kernel.ActiveLayoutTest do
 
   setup_all do
     LayoutStore.save(@test_layout)
+    on_exit(fn -> LayoutStore.delete(@test_layout.id) end)
     :ok
   end
 

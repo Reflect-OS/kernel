@@ -44,7 +44,7 @@ defmodule ReflectOS.Kernel.Section.Definition do
   @type t :: %__MODULE__{
           name: binary(),
           icon: binary(),
-          description: (map() -> Macro.t()),
+          description: (map() -> Macro.t()) | nil,
           auto_align: boolean()
         }
   defstruct name: nil,

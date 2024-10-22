@@ -10,14 +10,14 @@ defmodule ReflectOS.Kernel.Settings.SectionStore do
   def list() do
     Settings.match(["sections", :_])
     |> Enum.map(fn {["sections", id], section} ->
-      %{section | id: id}
+      format(section, id)
     end)
   end
 
   def get(section_id) when is_binary(section_id) do
     case Settings.get(["sections", section_id]) do
-      %Section{module: module, config: config} = section ->
-        %{section | id: section_id, config: struct(module, config)}
+      %Section{} = section ->
+        format(section, section_id)
 
       nil ->
         nil
@@ -54,5 +54,9 @@ defmodule ReflectOS.Kernel.Settings.SectionStore do
   def delete(section_id)
       when is_binary(section_id) do
     Settings.delete(["sections", section_id])
+  end
+
+  defp format(%Section{module: module, config: config} = section, section_id) do
+    %{section | id: section_id, config: struct(module, config)}
   end
 end

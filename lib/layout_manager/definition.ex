@@ -35,7 +35,7 @@ defmodule ReflectOS.Kernel.LayoutManager.Definition do
   @type t :: %__MODULE__{
           name: binary(),
           icon: binary(),
-          description: (map() -> Macro.t())
+          description: (map() -> Macro.t()) | nil
         }
   defstruct name: nil,
             icon: nil,

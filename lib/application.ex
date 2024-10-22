@@ -11,7 +11,7 @@ defmodule ReflectOS.Kernel.Application do
 
   @impl true
   def start(_type, _args) do
-    settings_config = Application.get_env(:reflect_os_kernel, :settings)
+    settings_config = Application.get_env(:reflect_os_kernel, :settings, [])
 
     children =
       [
@@ -38,7 +38,7 @@ defmodule ReflectOS.Kernel.Application do
 
   # Loads default seettings from configuration
   defp settings_properties() do
-    dashboard_config = Application.get_env(:reflect_os_kernel, :dashboard, [])
+    dashboard_config = Application.get_env(:reflect_os_kernel, :seed, [])
 
     []
     |> section_properties(dashboard_config)

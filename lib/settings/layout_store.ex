@@ -10,14 +10,14 @@ defmodule ReflectOS.Kernel.Settings.LayoutStore do
   def list() do
     Settings.match(["layouts", :_])
     |> Enum.map(fn {["layouts", id], layout} ->
-      %{layout | id: id}
+      format(layout, id)
     end)
   end
 
   def get(layout_id) when is_binary(layout_id) do
     case Settings.get(["layouts", layout_id]) do
-      %Layout{module: module, config: config} = layout ->
-        %{layout | id: layout_id, config: struct(module, config)}
+      %Layout{} = layout ->
+        format(layout, layout_id)
 
       nil ->
         nil
@@ -55,4 +55,7 @@ defmodule ReflectOS.Kernel.Settings.LayoutStore do
       when is_binary(layout_id) do
     Settings.delete(["layouts", layout_id])
   end
+
+  defp format(%Layout{module: module, config: config} = layout, layout_id),
+    do: %{layout | id: layout_id, config: struct(module, config)}
 end

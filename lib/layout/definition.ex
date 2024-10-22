@@ -45,7 +45,7 @@ defmodule ReflectOS.Kernel.Layout.Definition do
 
   @type t :: %__MODULE__{
           name: binary(),
-          description: (map() -> Macro.t()),
+          description: (map() -> Macro.t()) | nil,
           icon: binary(),
           locations: list(%{key: atom(), label: binary()})
         }
