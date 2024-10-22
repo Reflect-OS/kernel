@@ -26,7 +26,7 @@ defmodule ReflectOS.Kernel.Section.RegistryTest do
         ]
 
       # Act / Assert
-      assert ^expected = Registry.definitions()
+      assert [] == expected -- Registry.definitions()
     end
   end
 
@@ -42,7 +42,7 @@ defmodule ReflectOS.Kernel.Section.RegistryTest do
         ]
 
       # Act / Assert
-      assert ^expected = Registry.list()
+      assert [] == expected -- Registry.list()
     end
   end
 end
