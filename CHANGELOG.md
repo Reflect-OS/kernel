@@ -1,5 +1,7 @@
 # Changelog
 
+## v0.10.3
+
 ## v0.10.2
 
 * Updates `ReflectOS.Kernel.Section.Changeset`, `ReflectOS.Kernel.Layout.Changeset`, and `ReflectOS.Kernel.LayoutManager.Changeset` to default params
