@@ -114,8 +114,8 @@ For examples of how to build your own extensions to ReflectOS, check out the [Re
 
 ## Contributing
 
-Contributions are welcome for this project!  You can [open an issue]
-(https://github.com/Reflect-OS/kernel/issues) to report a bug or request
+Contributions are welcome for this project!  You can 
+[open an issue](https://github.com/Reflect-OS/kernel/issues) to report a bug or request
 a feature enhancement.  Code contributions are also welcomed, and can be 
 submitted by forking this repository and creating a pull request.  
 
