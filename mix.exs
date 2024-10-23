@@ -5,14 +5,18 @@ defmodule ReflectOS.Kernel.MixProject do
            |> File.read!()
            |> String.trim()
 
+  @source_url "https://github.com/Reflect-OS/kernel"
+
   def project do
     [
       app: :reflect_os_kernel,
+      description: description(),
       version: @version,
       elixir: "~> 1.17",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       docs: docs(),
+      package: package(),
       elixirc_paths: elixirc_paths(Mix.env()),
       test_coverage: [ignore_modules: [~r/ReflectOS\.Kernel\.Test/], summary: [threshold: 80]]
     ]
@@ -86,6 +90,20 @@ defmodule ReflectOS.Kernel.MixProject do
         ReflectOS.Kernel.Ecto.Module
       ]
     ]
+  end
+
+  defp package do
+    [
+      licenses: ["Apache-2.0"],
+      links: %{"GitHub" => @source_url}
+    ]
+  end
+
+  defp description do
+    """
+    ReflectOS Kernel is the foundation of the ReflectOS ecosystem, and provides the base set of
+    modules needed to extend your ReflectOS system.
+    """
   end
 
   defp elixirc_paths(:test), do: ["test/support", "lib"]
