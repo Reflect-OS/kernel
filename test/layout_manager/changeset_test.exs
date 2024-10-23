@@ -7,6 +7,11 @@ defmodule ReflectOS.Kernel.LayoutManager.ChangesetTest do
   alias ReflectOS.Kernel.TestLayoutManager
   alias ReflectOS.Kernel.LayoutManager.Changeset
 
+  test "takes default params" do
+    changeset = Changeset.change(%LayoutManager{})
+    assert %Ecto.Changeset{} = changeset
+  end
+
   describe "name" do
     test "is required" do
       changeset = Changeset.change(%LayoutManager{}, %{module: TestLayoutManager})

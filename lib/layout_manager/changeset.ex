@@ -14,7 +14,7 @@ defmodule ReflectOS.Kernel.LayoutManager.Changeset do
     config: :map
   }
 
-  def change(%LayoutManager{} = layout_manager, params) do
+  def change(%LayoutManager{} = layout_manager, params \\ %{}) do
     {layout_manager, @types}
     |> cast(params, [:name, :module, :config])
     |> validate_required([:name, :module])

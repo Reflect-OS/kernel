@@ -7,6 +7,11 @@ defmodule ReflectOS.Kernel.Section.ChangesetTest do
   alias ReflectOS.Kernel.TestSection
   alias ReflectOS.Kernel.Section.Changeset
 
+  test "takes default params" do
+    changeset = Changeset.change(%Section{})
+    assert %Ecto.Changeset{} = changeset
+  end
+
   describe "name" do
     test "is required" do
       changeset = Changeset.change(%Section{}, %{module: TestSection})

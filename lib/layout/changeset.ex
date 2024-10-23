@@ -14,7 +14,7 @@ defmodule ReflectOS.Kernel.Layout.Changeset do
     sections: :map
   }
 
-  def change(%Layout{} = section, params) do
+  def change(%Layout{} = section, params \\ %{}) do
     {section, @types}
     |> cast(params, [:name, :module, :config, :sections])
     |> validate_required([:name, :module])
