@@ -56,7 +56,7 @@ jobs:
       
       - name: Get Version
         id: get-version
-        run: echo "version=$(cat deploy/system/VERSION)" >> "$GITHUB_OUTPUT"
+        run: echo "version=$(cat VERSION)" >> "$GITHUB_OUTPUT"
 
       - name: Create release notes
         run: grep -Pazo "(?s)(?<=## v${{ steps.get-version.outputs.version }})[^#]+" CHANGELOG.md | sed '/./,$!d' > RELEASE_NOTES
