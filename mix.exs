@@ -94,6 +94,7 @@ defmodule ReflectOS.Kernel.MixProject do
 
   defp package do
     [
+      files: package_files(),
       licenses: ["Apache-2.0"],
       links: %{"GitHub" => @source_url}
     ]
@@ -105,6 +106,17 @@ defmodule ReflectOS.Kernel.MixProject do
     modules needed to extend your ReflectOS system.
     """
   end
+
+  defp package_files,
+    do: [
+      "lib",
+      ".formatter.exs",
+      "CHANGELOG.md",
+      "LICENSE",
+      "mix.exs",
+      "README.md",
+      "VERSION"
+    ]
 
   defp elixirc_paths(:test), do: ["test/support", "lib"]
   defp elixirc_paths(_), do: ["lib"]
