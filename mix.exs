@@ -14,7 +14,7 @@ defmodule ReflectOS.Kernel.MixProject do
       deps: deps(),
       docs: docs(),
       elixirc_paths: elixirc_paths(Mix.env()),
-      test_coverage: [ignore_modules: [~r/ReflectOS\.Kernel\.Test/]]
+      test_coverage: [ignore_modules: [~r/ReflectOS\.Kernel\.Test/], summary: [threshold: 80]]
     ]
   end
 
@@ -81,7 +81,7 @@ defmodule ReflectOS.Kernel.MixProject do
         ReflectOS.Kernel.Settings.System
       ],
       "Section Helpers": [
-        ReflectOS.Kernel.Primatives,
+        ReflectOS.Kernel.Primitives,
         ReflectOS.Kernel.Typography,
         ReflectOS.Kernel.GraphHelpers
       ],

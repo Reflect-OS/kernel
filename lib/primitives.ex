@@ -1,4 +1,4 @@
-defmodule ReflectOS.Kernel.Primatives do
+defmodule ReflectOS.Kernel.Primitives do
   @moduledoc """
   Provides useful helpers for developing section UIs using `Scenic.Scene`
   on the ReflectOS platform.

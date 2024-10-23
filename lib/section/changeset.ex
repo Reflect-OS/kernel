@@ -14,7 +14,7 @@ defmodule ReflectOS.Kernel.Section.Changeset do
     config: :map
   }
 
-  def change(%Section{} = section, params \\ %{}) do
+  def change(%Section{} = section, params) do
     {section, @types}
     |> cast(params, [:name, :module, :config])
     |> validate_required([:name, :module])

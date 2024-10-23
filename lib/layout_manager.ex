@@ -302,24 +302,48 @@ defmodule ReflectOS.Kernel.LayoutManager do
   ######
 
   # Working with GenServer State
-  @doc """
+  @doc ~S"""
   Convenience function to get an assigned value out of a `ReflectOS.Kernel.LayoutManager.State` struct.
+
+      iex> state = %State{assigns: %{some_field: "some value"}}
+      iex> get(state, :some_field)
+      "some value"
+
+      iex> state = %State{assigns: %{some_field: "some value"}}
+      iex> get(state, :invalid_key, "default value")
+      "default value"
   """
   @spec get(state :: State.t(), key :: any, default :: any) :: any
   def get(%State{assigns: assigns}, key, default \\ nil) do
     Map.get(assigns, key, default)
   end
 
-  @doc """
+  @doc ~S"""
   Convenience function to fetch an assigned value out of a `ReflectOS.Kernel.LayoutManager.State` struct.
+
+      iex> state = %State{assigns: %{some_field: "some value"}}
+      iex> fetch(state, :some_field)
+      {:ok, "some value"}
+
+      iex> state = %State{assigns: %{some_field: "some value"}}
+      iex> fetch(state, :invalid_key)
+      :error
   """
   @spec fetch(state :: State.t(), key :: any) :: {:ok, any} | :error
   def fetch(%State{assigns: assigns}, key) do
     Map.fetch(assigns, key)
   end
 
-  @doc """
+  @doc ~S"""
   Convenience function to assign a list or map of values into a `ReflectOS.Kernel.LayoutManager.State` struct.
+
+      iex> state = %State{assigns: %{}}
+      iex> assign(state, some_field: "Some Field", another_field: "Another Field")
+      %State{assigns: %{some_field: "Some Field", another_field: "Another Field"}}
+
+      iex> state = %State{assigns: %{}}
+      iex> assign(state, %{some_field: "Some Field"})
+      %State{assigns: %{some_field: "Some Field"}}
   """
   @spec assign(state :: State.t(), assigns :: Keyword.t() | map()) :: State.t()
   def assign(%State{} = state, assigns) when is_list(assigns) do
@@ -330,18 +354,30 @@ defmodule ReflectOS.Kernel.LayoutManager do
     %State{state | assigns: Map.merge(state.assigns, assigns)}
   end
 
-  @doc """
+  @doc ~S"""
   Convenience function to assign a value into a `ReflectOS.Kernel.LayoutManager.State` struct.
+
+      iex> state = %State{assigns: %{}}
+      iex> assign(state, :some_field, "Some Field")
+      %State{assigns: %{some_field: "Some Field"}}
   """
   @spec assign(state :: State.t(), key :: any, value :: any) :: State.t()
   def assign(%State{assigns: assigns} = state, key, value) do
     %{state | assigns: Map.put(assigns, key, value)}
   end
 
-  @doc """
+  @doc ~S"""
   Convenience function to assign a list of new values into a `ReflectOS.Kernel.LayoutManager.State` struct.
 
   Only values that do not already exist will be assigned.
+
+      iex> state = %State{assigns: %{existing_field: "Existing Field"}}
+      iex> assign_new(state, existing_field: "New Value", new_field: "New Field")
+      %State{assigns: %{existing_field: "Existing Field", new_field: "New Field"}}
+
+      iex> state = %State{assigns: %{existing_field: "Existing Field"}}
+      iex> assign_new(state, %{existing_field: "New Value", new_field: "New Field"})
+      %State{assigns: %{existing_field: "Existing Field", new_field: "New Field"}}
   """
   @spec assign_new(state :: State.t(), key_list :: Keyword.t() | map) :: State.t()
   def assign_new(%State{} = state, key_list) when is_list(key_list) do
@@ -352,10 +388,18 @@ defmodule ReflectOS.Kernel.LayoutManager do
     %{state | assigns: Map.merge(key_map, assigns)}
   end
 
-  @doc """
+  @doc ~S"""
   Convenience function to assign a new values into a `ReflectOS.Kernel.LayoutManager.State` struct.
 
   The value will only be assigned if it does not already exist in the struct.
+
+      iex> state = %State{assigns: %{existing_field: "Existing Field"}}
+      iex> assign_new(state, :existing_field, "New Value")
+      %State{assigns: %{existing_field: "Existing Field"}}
+
+      iex> state = %State{assigns: %{}}
+      iex> assign_new(state, :new_field, "New Value")
+      %State{assigns: %{new_field: "New Value"}}
   """
   @spec assign_new(state :: State.t(), key :: any, value :: any) :: State.t()
   def assign_new(%State{assigns: assigns} = state, key, value) do
